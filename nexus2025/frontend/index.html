@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NEXUS 2025 – India's premier technical symposium. Join 2000+ students, 50+ events, 30+ speakers. Register now!" />
+  <title>NEXUS 2025 | Technical Symposium</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Internal CSS -->
+  <style>
+    /* ── Internal CSS — Home page specific ── */
+    #home-ticker {
+      background: rgba(0, 245, 160, 0.05);
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+      overflow: hidden;
+      padding: 10px 0;
+      white-space: nowrap;
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      gap: 48px;
+      animation: ticker 28s linear infinite;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .ticker-item span { color: var(--primary); }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    #speakers { background: var(--dark-card); }
+
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .speaker-card {
+      text-align: center;
+      padding: 32px 20px;
+      border-radius: var(--radius);
+      background: var(--dark);
+      border: 1px solid var(--dark-border);
+      transition: var(--transition);
+    }
+
+    .speaker-card:hover {
+      border-color: var(--glass-border);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .speaker-avatar {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      font-size: 2.2rem;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 8px 24px rgba(0,245,160,0.3);
+      color: #070D14;
+      font-weight: 900;
+    }
+
+    .speaker-name { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .speaker-role { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
+    .speaker-org { font-size: 0.78rem; color: var(--secondary); font-weight: 600; }
+
+    #cta-section {
+      background: linear-gradient(135deg, #091722, var(--dark-card));
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    #cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(108,99,255,0.12) 0%, transparent 70%);
+    }
+
+    #cta-section .container { position: relative; z-index: 1; }
+
+    .cta-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; margin-bottom: 20px; }
+    .cta-sub { font-size: 1.05rem; color: var(--text-muted); max-width: 540px; margin: 0 auto 48px; }
+
+    .prize-pool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    .prize-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--dark-border);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .prize-amount { font-size: 2rem; font-weight: 800; color: var(--warning); margin-bottom: 6px; }
+    .prize-event { font-size: 0.88rem; color: var(--text-muted); }
+
+    @media (max-width: 768px) {
+      .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+      .prize-pool-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .speakers-grid { grid-template-columns: 1fr; }
+      .prize-pool-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ────────────────────────────────────────────
+       NAVIGATION
+  ──────────────────────────────────────────── -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="NEXUS 2025 Home">
+        <div class="logo-icon">N</div>
+        <div>
+          <span class="logo-text">NEXUS</span>
+          <span class="logo-sub">Technical Symposium</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="nav-menu" role="menubar">
+        <li role="none"><a href="index.html" class="active" role="menuitem">Home</a></li>
+        <li role="none"><a href="events.html" role="menuitem">Events</a></li>
+        <li role="none"><a href="schedule.html" role="menuitem">Schedule</a></li>
+        <li role="none"><a href="register.html" role="menuitem">Register</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+        <li role="none"><a href="register.html" class="nav-cta" role="menuitem">Register Now →</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ────────────────────────────────────────────
+       NEWS TICKER
+  ──────────────────────────────────────────── -->
+  <div id="home-ticker" aria-live="polite">
+    <div class="ticker-track">
+      <span class="ticker-item">🎯 <span>Early Bird Registration Open</span> — Save ₹200</span>
+      <span class="ticker-item">📅 <span>Event Date:</span> September 12–13, 2025</span>
+      <span class="ticker-item">🏆 <span>Prize Pool</span> worth ₹2,00,000</span>
+      <span class="ticker-item">🎤 <span>30+ Industry Speakers</span> confirmed</span>
+      <span class="ticker-item">💻 <span>50+ Technical Events</span> across 8 domains</span>
+      <span class="ticker-item">🎯 <span>Early Bird Registration Open</span> — Save ₹200</span>
+      <span class="ticker-item">📅 <span>Event Date:</span> September 12–13, 2025</span>
+      <span class="ticker-item">🏆 <span>Prize Pool</span> worth ₹2,00,000</span>
+      <span class="ticker-item">🎤 <span>30+ Industry Speakers</span> confirmed</span>
+      <span class="ticker-item">💻 <span>50+ Technical Events</span> across 8 domains</span>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       HERO SECTION
+  ──────────────────────────────────────────── -->
+  <main>
+    <section id="hero" aria-label="Hero section">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Registration Open — Sept 12–13, 2025
+        </div>
+
+        <h1 class="hero-title" id="page-title">
+          <span class="text-gradient">NEXUS</span><br />
+          <span style="color: #fff;">2025</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          India's premier technical symposium bringing together innovators, coders, and visionaries for two days of mind-bending challenges, workshops, and inspiration.
+        </p>
+
+        <div class="hero-actions">
+          <a href="register.html" class="btn btn-primary btn-lg" id="hero-register-btn">
+            ⚡ Register Now
+          </a>
+          <a href="events.html" class="btn btn-outline btn-lg" id="hero-events-btn">
+            🗓 Explore Events
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">2,500+</span>
+            <span class="stat-label">Participants</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Events</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">30+</span>
+            <span class="stat-label">Speakers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">₹2L</span>
+            <span class="stat-label">Prize Pool</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────
+         COUNTDOWN
+    ──────────────────────────────────────────── -->
+    <section id="countdown-section" aria-label="Event countdown">
+      <div class="countdown-bar">
+        <div class="countdown-inner">
+          <div class="countdown-text">
+            <h3>⏳ Event Starts In</h3>
+            <p>September 12, 2025 — 9:00 AM IST</p>
+          </div>
+          <div class="countdown-timer" id="countdown" aria-label="Countdown timer">
+            <div class="time-block"><span class="time-number" id="days">00</span><span class="time-label">Days</span></div>
+            <div class="time-block"><span class="time-number" id="hours">00</span><span class="time-label">Hours</span></div>
+            <div class="time-block"><span class="time-number" id="minutes">00</span><span class="time-label">Mins</span></div>
+            <div class="time-block"><span class="time-number" id="seconds">00</span><span class="time-label">Secs</span></div>
+          </div>
+          <a href="register.html" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.5);">Secure Your Spot →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────
+         WHY ATTEND / FEATURES
+    ──────────────────────────────────────────── -->
+    <section id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="text-center mb-48">
+          <span class="section-label">✨ Why Choose NEXUS</span>
+          <h2 class="section-title" id="features-heading">An Experience Like <span class="text-gradient">No Other</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">Everything you need to level up your technical prowess and connect with India's brightest minds.</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="card" style="--card-color: #6C63FF;">
+            <div class="card-icon" style="background: rgba(108,99,255,0.15);">⚡</div>
+            <h3 class="card-title">50+ Technical Events</h3>
+            <p class="card-text">Competitive events spanning AI/ML, Cybersecurity, Web Dev, Robotics, Data Science, and more.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" style="background: rgba(0,212,255,0.15);">🎤</div>
+            <h3 class="card-title">Industry Expert Talks</h3>
+            <p class="card-text">Learn from 30+ speakers from Google, Microsoft, Amazon, and leading Indian startups.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" style="background: rgba(255,107,107,0.15);">🏆</div>
+            <h3 class="card-title">₹2 Lakh Prize Pool</h3>
+            <p class="card-text">Compete for massive cash prizes, internship offers, and recognition certificates.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" style="background: rgba(16,185,129,0.15);">🤝</div>
+            <h3 class="card-title">Networking Hub</h3>
+            <p class="card-text">Connect with 2,500+ students, recruiters, and industry professionals in one place.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" style="background: rgba(245,158,11,0.15);">🛠️</div>
+            <h3 class="card-title">Hands-on Workshops</h3>
+            <p class="card-text">15+ workshops on cutting-edge tools: Docker, Kubernetes, LLMs, Flutter, and Blockchain.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" style="background: rgba(236,72,153,0.15);">📜</div>
+            <h3 class="card-title">Certifications</h3>
+            <p class="card-text">All participants receive verified digital certificates. Winners get special achievement awards.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────
+         SPEAKERS
+    ──────────────────────────────────────────── -->
+    <section id="speakers" aria-labelledby="speakers-heading">
+      <div class="container">
+        <div class="text-center mb-48">
+          <span class="section-label">🎤 Keynote Speakers</span>
+          <h2 class="section-title" id="speakers-heading">Learn from the <span class="text-gradient">Best Minds</span></h2>
+          <div class="divider"></div>
+        </div>
+
+        <div class="speakers-grid">
+          <article class="speaker-card">
+            <div class="speaker-avatar">AK</div>
+            <h3 class="speaker-name">Dr. Arjun Kumar</h3>
+            <p class="speaker-role">Principal Engineer</p>
+            <p class="speaker-org">Google DeepMind India</p>
+          </article>
+
+          <article class="speaker-card">
+            <div class="speaker-avatar" style="background: linear-gradient(135deg, #FF6B6B, #FF9A8B);">PM</div>
+            <h3 class="speaker-name">Priya Menon</h3>
+            <p class="speaker-role">Senior Architect</p>
+            <p class="speaker-org">Microsoft Azure</p>
+          </article>
+
+          <article class="speaker-card">
+            <div class="speaker-avatar" style="background: linear-gradient(135deg, #10B981, #34D399);">SR</div>
+            <h3 class="speaker-name">Siddharth Rao</h3>
+            <p class="speaker-role">Cybersecurity Lead</p>
+            <p class="speaker-org">Razorpay Security</p>
+          </article>
+
+          <article class="speaker-card">
+            <div class="speaker-avatar" style="background: linear-gradient(135deg, #F59E0B, #FCD34D);">NK</div>
+            <h3 class="speaker-name">Neeraj Kapoor</h3>
+            <p class="speaker-role">VP Engineering</p>
+            <p class="speaker-org">Flipkart</p>
+          </article>
+
+          <article class="speaker-card">
+            <div class="speaker-avatar" style="background: linear-gradient(135deg, #8B5CF6, #A78BFA);">RA</div>
+            <h3 class="speaker-name">Dr. Rekha Agarwal</h3>
+            <p class="speaker-role">AI Research Lead</p>
+            <p class="speaker-org">IIT Bombay</p>
+          </article>
+
+          <article class="speaker-card">
+            <div class="speaker-avatar" style="background: linear-gradient(135deg, #EC4899, #F472B6);">VT</div>
+            <h3 class="speaker-name">Vikram Tiwari</h3>
+            <p class="speaker-role">Founder & CTO</p>
+            <p class="speaker-org">Omni Labs</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────
+         CTA / PRIZES
+    ──────────────────────────────────────────── -->
+    <section id="cta-section" aria-labelledby="cta-heading">
+      <div class="container">
+        <span class="section-label">🏆 Prize Pool</span>
+        <h2 class="cta-title" id="cta-heading">Win Big at <span class="text-gradient">NEXUS 2025</span></h2>
+        <p class="cta-sub">Compete, innovate, and walk away with massive rewards, recognition, and real opportunities.</p>
+
+        <div>
+          <a href="register.html" class="btn btn-primary btn-lg" id="cta-register-btn">
+            🚀 Register for Free
+          </a>
+          <!-- Inline CSS example -->
+          <a href="events.html" class="btn btn-outline btn-lg" style="margin-left: 16px;">View All Events</a>
+        </div>
+
+        <div class="prize-pool-grid">
+          <div class="prize-card">
+            <div class="prize-amount">₹50,000</div>
+            <div class="prize-event">🤖 Hackathon — 1st Place</div>
+          </div>
+          <div class="prize-card">
+            <div class="prize-amount">₹30,000</div>
+            <div class="prize-event">💡 Project Expo — 1st Place</div>
+          </div>
+          <div class="prize-card">
+            <div class="prize-amount">₹20,000</div>
+            <div class="prize-event">🔐 CTF Champion</div>
+          </div>
+          <div class="prize-card">
+            <div class="prize-amount">₹15,000</div>
+            <div class="prize-event">🧠 Quiz Bowl Champion</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ────────────────────────────────────────────
+       FOOTER
+  ──────────────────────────────────────────── -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="display:inline-flex; margin-bottom:0;">
+            <div class="logo-icon">N</div>
+            <div><span class="logo-text">NEXUS</span><span class="logo-sub">2025</span></div>
+          </a>
+          <p>India's premier technical symposium. Two days of innovation, competition, and connection for the next generation of technologists.</p>
+          <div class="d-flex gap-8">
+            <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+            <a href="#" class="social-link" aria-label="Instagram">📸</a>
+            <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="schedule.html">Schedule</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Events</h4>
+          <ul>
+            <li><a href="events.html">Hackathon</a></li>
+            <li><a href="events.html">CTF</a></li>
+            <li><a href="events.html">Coding Contest</a></li>
+            <li><a href="events.html">Project Expo</a></li>
+            <li><a href="events.html">Workshops</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Info</h4>
+          <ul>
+            <li><a href="contact.html">FAQ</a></li>
+            <li><a href="#">Sponsorship</a></li>
+            <li><a href="#">Volunteer</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS Technical Symposium. All rights reserved. | Reg. ID: 1089113</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="contact.html">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // ── Hamburger Menu ──
+    const toggle = document.getElementById('nav-toggle');
+    const menu   = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', menu.classList.contains('open'));
+    });
+
+    // ── Countdown Timer ──
+    function updateCountdown() {
+      const target = new Date('2025-09-12T09:00:00+05:30').getTime();
+      const now    = Date.now();
+      const diff   = target - now;
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '<span style="color:#10B981;font-size:1.5rem;font-weight:700;">🎉 Event is Live!</span>';
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('days').textContent    = String(d).padStart(2,'0');
+      document.getElementById('hours').textContent   = String(h).padStart(2,'0');
+      document.getElementById('minutes').textContent = String(m).padStart(2,'0');
+      document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── Navbar Scroll Effect ──
+    window.addEventListener('scroll', () => {
+      const nb = document.getElementById('navbar');
+      nb.style.background = window.scrollY > 50
+        ? 'rgba(10,10,26,0.98)'
+        : 'rgba(10,10,26,0.9)';
+    });
+
+    // ── Intersection Observer — Fade-in cards ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card, .speaker-card, .prize-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

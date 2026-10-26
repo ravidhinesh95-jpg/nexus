@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NEXUS 2025 Event Schedule — Day-by-day timetable for all sessions, keynotes, workshops, and competitions." />
+  <title>Schedule | NEXUS 2025 Technical Symposium</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Internal CSS — Schedule page specific -->
+  <style>
+    .venue-map {
+      background: linear-gradient(135deg, rgba(0,245,160,0.08), rgba(0,217,245,0.06));
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-top: 48px;
+    }
+
+    .venue-map h3 { font-size: 1.2rem; margin-bottom: 20px; color: var(--text-primary); }
+
+    .venue-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .venue-item {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+    }
+
+    .venue-item h4 { font-size: 0.88rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .venue-item p  { font-size: 0.78rem; color: var(--text-muted); }
+
+    .keynote-card {
+      background: linear-gradient(135deg, rgba(0,245,160,0.12), rgba(0,217,245,0.06));
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+    }
+
+    .keynote-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    #schedule-day-2 { display: none; }
+
+    @media (max-width: 768px) {
+      .venue-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .venue-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">N</div>
+        <div><span class="logo-text">NEXUS</span><span class="logo-sub">Technical Symposium</span></div>
+      </a>
+      <ul class="nav-links" id="nav-menu" role="menubar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="schedule.html" class="active">Schedule</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="register.html" class="nav-cta">Register Now →</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- PAGE HERO -->
+    <header class="page-hero" role="banner">
+      <div class="container">
+        <span class="section-label">📋 Full Timetable</span>
+        <h1 id="page-title" class="section-title" style="font-size:clamp(2.5rem,5vw,4rem); letter-spacing:-1px;">
+          Event <span class="text-gradient">Schedule</span>
+        </h1>
+        <p class="section-subtitle" style="margin-bottom:0;">
+          Two action-packed days. Plan your time wisely to catch every session you love.
+        </p>
+      </div>
+    </header>
+
+    <!-- SCHEDULE SECTION -->
+    <section id="schedule" aria-labelledby="schedule-heading">
+      <div class="container">
+        <!-- Tab Controls -->
+        <div class="schedule-tabs" role="tablist" aria-label="Schedule days">
+          <button class="schedule-tab active" id="tab-day1" role="tab" aria-selected="true" aria-controls="schedule-day-1" onclick="showDay(1)">📅 Day 1 — Sept 12</button>
+          <button class="schedule-tab" id="tab-day2" role="tab" aria-selected="false" aria-controls="schedule-day-2" onclick="showDay(2)">📅 Day 2 — Sept 13</button>
+        </div>
+
+        <!-- ─── DAY 1 ─── -->
+        <div id="schedule-day-1" role="tabpanel" aria-labelledby="tab-day1">
+          <h2 class="sr-only" id="schedule-heading">Day 1 Schedule</h2>
+
+          <div class="timeline">
+            <!-- 08:30 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">08:30</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <span class="badge badge-success">Registration</span>
+                  <span class="badge badge-secondary">All Day</span>
+                </div>
+                <h4>On-Site Registration &amp; Kit Distribution</h4>
+                <p class="timeline-speaker">Collect your ID badge, event kit, and welcome goodies at the Registration Desk — Main Gate</p>
+              </div>
+            </div>
+
+            <!-- 09:30 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">09:30</div>
+              <div class="keynote-card">
+                <span class="keynote-badge">⭐ Keynote</span>
+                <h4 style="font-size:1.05rem; font-weight:700; color:var(--text-primary); margin-bottom:6px;">Opening Ceremony &amp; Inaugural Address</h4>
+                <p class="timeline-speaker">Chief Guest: <strong>Dr. Arjun Kumar</strong>, Principal Engineer, Google DeepMind India</p>
+                <div class="timeline-tags">
+                  <span class="badge badge-primary">Main Auditorium</span>
+                  <span class="badge badge-secondary">09:30 – 11:00</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 11:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">11:00</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <span class="badge badge-primary">Competitive</span>
+                  <span class="badge badge-secondary">3 hrs</span>
+                </div>
+                <h4>Code Clash — Competitive Programming Contest</h4>
+                <p class="timeline-speaker">Moderator: <strong>Prof. Ramesh Krishnan</strong> | IT Lab — Room 204</p>
+                <div class="timeline-tags">
+                  <span class="badge badge-warning">Individual</span>
+                  <span class="badge badge-accent">₹10,000 Prize</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 10:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">10:00</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <span class="badge badge-primary">Competitive</span>
+                  <span class="badge badge-secondary">8 hrs</span>
+                </div>
+                <h4>CTF — Capture The Flag (Begins)</h4>
+                <p class="timeline-speaker">Lead: <strong>Siddharth Rao</strong>, Cybersecurity Expert, Razorpay | CS Lab 301</p>
+                <div class="timeline-tags">
+                  <span class="badge badge-warning">Team ≤3</span>
+                  <span class="badge badge-accent">₹20,000 Prize</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 10:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">10:00</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <span class="badge badge-primary">Quiz</span>
+                  <span class="badge badge-secondary">2 hrs</span>
+                </div>
+                <h4>Tech Quiz Bowl — Prelim Rounds</h4>
+                <p class="timeline-speaker">MC: <strong>Prof. Anitha Nair</strong> | Seminar Hall B</p>
+                <div class="timeline-tags">
+                  <span class="badge badge-warning">Team (2)</span>
+                  <span class="badge badge-accent">₹5,000 Prize</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 13:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">13:00</div>
+              <div class="timeline-card" style="background:rgba(16,185,129,0.05); border-color:rgba(16,185,129,0.2);">
+                <h4>🍽️ Lunch Break</h4>
+                <p class="timeline-speaker">Complimentary lunch for all registered participants — Cafeteria Block B</p>
+              </div>
+            </div>
+
+            <!-- 14:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">14:00</div>
+              <div class="keynote-card">
+                <span class="keynote-badge">🎤 Talk</span>
+                <h4 style="font-size:1.05rem; font-weight:700; color:var(--text-primary); margin-bottom:6px;">Generative AI: The Future of Software Development</h4>
+                <p class="timeline-speaker">Speaker: <strong>Priya Menon</strong>, Senior Architect, Microsoft Azure</p>
+                <div class="timeline-tags">
+                  <span class="badge badge-primary">Main Auditorium</span>
+                  <span class="badge badge-secondary">14:00 – 15:30</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 14:00 Workshop -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">14:00</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <span class="badge badge-primary">Workshop</span>
+                  <span class="badge badge-secondary">3 hrs</span>
+                </div>
+                <h4>AI/ML Bootcamp — Hands-on Session</h4>
+                <p class="timeline-speaker">Instructor: <strong>Dr. Rekha Agarwal</strong>, IIT Bombay | AI Research Lab</p>
+                <div class="timeline-tags">
+                  <span class="badge badge-warning">50 seats</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 15:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">15:00</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <span class="badge badge-primary">Competitive</span>
+                  <span class="badge badge-secondary">5 hrs</span>
+                </div>
+                <h4>E-Sports Championship — BGMI &amp; Valorant</h4>
+                <p class="timeline-speaker">Gaming Arena — Block D</p>
+                <div class="timeline-tags">
+                  <span class="badge badge-warning">Team (4–5)</span>
+                  <span class="badge badge-accent">₹5,000 Prize</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 18:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">18:00</div>
+              <div class="timeline-card">
+                <h4>🌟 Cultural Night &amp; Networking Dinner</h4>
+                <p class="timeline-speaker">Open to all participants — Outdoor Arena</p>
+              </div>
+            </div>
+
+            <!-- 21:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">21:00</div>
+              <div class="timeline-card" style="background:rgba(255,107,107,0.05); border-color:rgba(255,107,107,0.2);">
+                <h4>🌙 Day 1 Wrap — Hackathon Night Begins</h4>
+                <p class="timeline-speaker">Hackathon teams check in at Main Auditorium for the overnight sprint</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── DAY 2 ─── -->
+        <div id="schedule-day-2" role="tabpanel" aria-labelledby="tab-day2">
+          <div class="timeline">
+            <!-- 09:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">09:00</div>
+              <div class="timeline-card">
+                <h4>☀️ Day 2 Registration &amp; Breakfast</h4>
+                <p class="timeline-speaker">Registration counter opens — Main Gate</p>
+              </div>
+            </div>
+
+            <!-- 09:30 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">09:30</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header"><span class="badge badge-warning">Robotics</span><span class="badge badge-accent">₹15,000</span></div>
+                <h4>Robo Wars — Mech Battle Arena</h4>
+                <p class="timeline-speaker">Referee: <strong>Prof. Karthik Sundar</strong> | Mech Arena — Ground Floor</p>
+                <div class="timeline-tags"><span class="badge badge-warning">Team (2–5)</span></div>
+              </div>
+            </div>
+
+            <!-- 10:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">10:00</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header"><span class="badge badge-primary">Research</span><span class="badge badge-accent">₹8,000</span></div>
+                <h4>Paper Presentation — All Tracks</h4>
+                <p class="timeline-speaker">Judges: Industry + Faculty Panel | Conference Room</p>
+              </div>
+            </div>
+
+            <!-- 10:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">10:00</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header"><span class="badge badge-success">Innovation</span><span class="badge badge-accent">₹30,000</span></div>
+                <h4>Project Expo — Public Showcase</h4>
+                <p class="timeline-speaker">Seminar Hall A — Open to all visitors</p>
+              </div>
+            </div>
+
+            <!-- 11:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">11:00</div>
+              <div class="keynote-card">
+                <span class="keynote-badge">🎤 Talk</span>
+                <h4 style="font-size:1.05rem; font-weight:700; color:var(--text-primary); margin-bottom:6px;">Building Unicorns: Lessons from the Indian Startup Ecosystem</h4>
+                <p class="timeline-speaker">Speaker: <strong>Vikram Tiwari</strong>, Founder &amp; CTO, Omni Labs</p>
+                <div class="timeline-tags">
+                  <span class="badge badge-primary">Main Auditorium</span>
+                  <span class="badge badge-secondary">11:00 – 12:30</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 13:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">13:00</div>
+              <div class="timeline-card" style="background:rgba(16,185,129,0.05); border-color:rgba(16,185,129,0.2);">
+                <h4>🍽️ Lunch Break</h4>
+                <p class="timeline-speaker">Cafeteria Block B</p>
+              </div>
+            </div>
+
+            <!-- 14:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">14:00</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header"><span class="badge badge-primary">Workshop</span></div>
+                <h4>Full-Stack Dev Workshop — React + Node.js</h4>
+                <p class="timeline-speaker">Instructor: <strong>Neeraj Kapoor</strong>, VP Engineering, Flipkart | Web Dev Lab 108</p>
+              </div>
+            </div>
+
+            <!-- 15:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">15:00</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header"><span class="badge badge-primary">Hackathon</span><span class="badge badge-accent">₹50,000</span></div>
+                <h4>Hackathon — Demo &amp; Judging</h4>
+                <p class="timeline-speaker">Teams present their 24-hour builds to the expert jury panel | Main Auditorium</p>
+              </div>
+            </div>
+
+            <!-- 17:00 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">17:00</div>
+              <div class="keynote-card">
+                <span class="keynote-badge">🏆 Closing</span>
+                <h4 style="font-size:1.05rem; font-weight:700; color:var(--text-primary); margin-bottom:6px;">Prize Distribution &amp; Closing Ceremony</h4>
+                <p class="timeline-speaker">Awards presented by Chief Guest | Main Auditorium</p>
+                <div class="timeline-tags">
+                  <span class="badge badge-primary">All Participants</span>
+                  <span class="badge badge-secondary">17:00 – 18:30</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Venue Map -->
+        <div class="venue-map" aria-label="Venue guide">
+          <h3>📍 Venue Guide — Campus Map</h3>
+          <div class="venue-grid">
+            <div class="venue-item"><h4>🏟️ Main Auditorium</h4><p>Keynotes, Opening &amp; Closing, Hackathon</p></div>
+            <div class="venue-item"><h4>💻 IT Lab — Room 204</h4><p>Code Clash, Online Rounds</p></div>
+            <div class="venue-item"><h4>🔐 CS Lab — Room 301</h4><p>CTF Competition</p></div>
+            <div class="venue-item"><h4>🤖 AI Research Lab</h4><p>AI/ML Bootcamp</p></div>
+            <div class="venue-item"><h4>📋 Seminar Hall A</h4><p>Project Expo</p></div>
+            <div class="venue-item"><h4>🧩 Seminar Hall B</h4><p>Tech Quiz Bowl</p></div>
+            <div class="venue-item"><h4>🦾 Mech Arena</h4><p>Robo Wars — Ground Floor</p></div>
+            <div class="venue-item"><h4>🎮 Gaming Arena</h4><p>E-Sports — Block D</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="display:inline-flex;margin-bottom:0;">
+            <div class="logo-icon">N</div>
+            <div><span class="logo-text">NEXUS</span><span class="logo-sub">2025</span></div>
+          </a>
+          <p>India's premier technical symposium for the next generation of technologists.</p>
+        </div>
+        <div class="footer-col"><h4 class="footer-col-title">Navigation</h4><ul>
+          <li><a href="index.html">Home</a></li><li><a href="events.html">Events</a></li>
+          <li><a href="schedule.html">Schedule</a></li><li><a href="register.html">Register</a></li>
+          <li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4 class="footer-col-title">Events</h4><ul>
+          <li><a href="events.html">Hackathon</a></li><li><a href="events.html">CTF</a></li>
+          <li><a href="events.html">Code Clash</a></li><li><a href="events.html">Project Expo</a></li></ul></div>
+        <div class="footer-col"><h4 class="footer-col-title">Support</h4><ul>
+          <li><a href="contact.html">Contact Us</a></li><li><a href="#">FAQ</a></li><li><a href="#">Rulebook</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS Technical Symposium. All rights reserved.</p>
+        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function showDay(day) {
+      document.getElementById('schedule-day-1').style.display = day === 1 ? 'block' : 'none';
+      document.getElementById('schedule-day-2').style.display = day === 2 ? 'block' : 'none';
+      document.getElementById('tab-day1').classList.toggle('active', day === 1);
+      document.getElementById('tab-day2').classList.toggle('active', day === 2);
+      document.getElementById('tab-day1').setAttribute('aria-selected', day === 1);
+      document.getElementById('tab-day2').setAttribute('aria-selected', day === 2);
+    }
+
+    const toggle = document.getElementById('nav-toggle');
+    const menu   = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', menu.classList.contains('open'));
+    });
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').style.background =
+        window.scrollY > 50 ? 'rgba(10,10,26,0.98)' : 'rgba(10,10,26,0.9)';
+    });
+  </script>
+</body>
+</html>

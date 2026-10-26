@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Registration Confirmed! You are now registered for NEXUS 2025 Technical Symposium." />
+  <title>Registration Confirmed | NEXUS 2025</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Internal CSS -->
+  <style>
+    body { background: var(--dark); }
+
+    /* Animated particle background */
+    .particles {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px; height: 4px;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0;
+      animation: rise linear infinite;
+    }
+
+    @keyframes rise {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+    }
+
+    .confirm-page { position: relative; z-index: 1; }
+
+    .confirm-card {
+      /* Using Inline CSS for some properties here */
+      animation: slideUp 0.7s cubic-bezier(0.34,1.2,0.64,1) forwards;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .confetti {
+      font-size: 2rem;
+      display: block;
+      animation: bounce 0.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-10px); }
+    }
+
+    .next-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .next-step-item {
+      background: var(--dark);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .next-step-item:hover { border-color: var(--primary); }
+
+    .next-step-icon { font-size: 1.8rem; display: block; margin-bottom: 8px; }
+    .next-step-title { font-size: 0.85rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .next-step-text { font-size: 0.78rem; color: var(--text-muted); }
+
+    @media (max-width: 600px) {
+      .next-steps { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Animated Background Particles -->
+  <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation" style="position:fixed;">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">N</div>
+        <div><span class="logo-text">NEXUS</span><span class="logo-sub">Technical Symposium</span></div>
+      </a>
+      <ul class="nav-links" id="nav-menu" role="menubar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- CONFIRMATION PAGE -->
+  <main class="confirm-page" aria-label="Registration confirmation">
+    <div class="confirm-card">
+      <span class="confetti" aria-hidden="true">🎉</span>
+
+      <div class="confirm-icon" aria-label="Success checkmark">✅</div>
+
+      <h1 id="page-title" style="font-size:clamp(1.8rem,4vw,2.5rem); font-weight:800; color:var(--text-primary); margin-bottom:12px;">
+        Registration <span class="text-gradient">Confirmed!</span>
+      </h1>
+
+      <p id="confirmation-message" style="color:var(--text-muted); font-size:0.95rem; max-width:420px; margin:0 auto;">
+        Welcome to NEXUS 2025! Your spot is secured. Check your email for the confirmation and event kit details.
+      </p>
+
+      <div class="confirm-id" aria-label="Registration ID">
+        🎫 Your ID: <strong id="reg-id">NX25-0000</strong>
+      </div>
+
+      <!-- Confirmation Details Table -->
+      <div class="confirm-details" aria-label="Registration summary">
+        <div class="confirm-row">
+          <span>Participant Name</span>
+          <span id="conf-name">—</span>
+        </div>
+        <div class="confirm-row">
+          <span>Email Address</span>
+          <span id="conf-email">—</span>
+        </div>
+        <div class="confirm-row">
+          <span>Event Date</span>
+          <span>September 12–13, 2025</span>
+        </div>
+        <div class="confirm-row">
+          <span>Venue</span>
+          <span>SVCE Campus, Tamil Nadu</span>
+        </div>
+        <div class="confirm-row">
+          <span>Registration Status</span>
+          <!-- Inline CSS for status badge -->
+          <span id="registration-status" style="color:#10B981; font-weight:700; background:rgba(16,185,129,0.15); padding:3px 12px; border-radius:999px; border:1px solid rgba(16,185,129,0.3);">✓ Confirmed</span>
+        </div>
+      </div>
+
+      <!-- Next Steps -->
+      <div class="next-steps" aria-label="Next steps">
+        <div class="next-step-item">
+          <span class="next-step-icon">📧</span>
+          <div class="next-step-title">Check Email</div>
+          <div class="next-step-text">Confirmation sent to your inbox</div>
+        </div>
+        <div class="next-step-item">
+          <span class="next-step-icon">📋</span>
+          <div class="next-step-title">Read Schedule</div>
+          <div class="next-step-text">Plan your 2-day itinerary</div>
+        </div>
+        <div class="next-step-item">
+          <span class="next-step-icon">🤝</span>
+          <div class="next-step-title">Join Community</div>
+          <div class="next-step-text">WhatsApp group link in email</div>
+        </div>
+        <div class="next-step-item">
+          <span class="next-step-icon">🗓️</span>
+          <div class="next-step-title">Save the Date</div>
+          <div class="next-step-text">Sept 12–13, 9 AM IST</div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:40px;">
+        <a href="schedule.html" class="btn btn-primary btn-lg">📋 View Schedule</a>
+        <a href="index.html" class="btn btn-outline btn-lg">🏠 Back to Home</a>
+      </div>
+
+      <p style="margin-top:32px; font-size:0.8rem; color:var(--text-muted);">
+        Questions? Contact us at <a href="contact.html" style="color:var(--primary-light);">support@nexus2025.in</a>
+      </p>
+    </div>
+  </main>
+
+  <script>
+    // Hamburger
+    const toggle = document.getElementById('nav-toggle');
+    const menu   = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', menu.classList.contains('open'));
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const regId = params.get('reg_id');
+    const confirmationMessage = document.getElementById('confirmation-message');
+
+    async function loadRegistration() {
+      if (!regId) {
+        showLookupError();
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/registration/' + encodeURIComponent(regId));
+        const result = await response.json();
+        if (!response.ok || !result.success) {
+          showLookupError();
+          return;
+        }
+
+        const registration = result.registration;
+        document.getElementById('reg-id').textContent = registration.reg_id;
+        document.getElementById('conf-name').textContent = registration.full_name;
+        document.getElementById('conf-email').textContent = registration.email;
+      } catch (_error) {
+        showLookupError();
+      }
+    }
+
+    function showLookupError() {
+      document.getElementById('page-title').textContent = 'Registration Not Found';
+      document.getElementById('reg-id').textContent = '—';
+      document.getElementById('conf-name').textContent = '—';
+      document.getElementById('conf-email').textContent = '—';
+      document.getElementById('registration-status').textContent = 'Not verified';
+      confirmationMessage.textContent = 'We could not verify this registration. Please return to the registration page or contact the organizing team.';
+    }
+
+    loadRegistration();
+
+    // Animated particles
+    const container = document.getElementById('particles');
+    const colors = ['#00F5A0','#00D9F5','#FF2A6D','#FFB800','#9D4EDD'];
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.cssText = `
+        left: ${Math.random()*100}%;
+        width: ${Math.random()*6+2}px;
+        height: ${Math.random()*6+2}px;
+        background: ${colors[Math.floor(Math.random()*colors.length)]};
+        animation-duration: ${Math.random()*6+4}s;
+        animation-delay: ${Math.random()*6}s;
+      `;
+      container.appendChild(p);
+    }
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').style.background =
+        window.scrollY > 50 ? 'rgba(10,10,26,0.98)' : 'rgba(10,10,26,0.9)';
+    });
+  </script>
+</body>
+</html>

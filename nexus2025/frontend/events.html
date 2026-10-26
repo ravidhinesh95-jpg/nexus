@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NEXUS 2025 Technical Events — Hackathon, CTF, Coding Contest, Project Expo, Robotics, AI/ML Challenge, Quiz Bowl, and more." />
+  <title>Events | NEXUS 2025 Technical Symposium</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Internal CSS — Events page specific -->
+  <style>
+    /* Prize ribbon on event cards */
+    .prize-ribbon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: linear-gradient(135deg, var(--warning), #FCD34D);
+      color: #000;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-bottom-left-radius: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Category color themes */
+    .theme-blue  { background: rgba(0, 245, 160, 0.15); }
+    .theme-cyan  { background: rgba(0, 217, 245, 0.15); }
+    .theme-red   { background: rgba(255, 42, 109, 0.15); }
+    .theme-green { background: rgba(0, 245, 160, 0.15); }
+    .theme-gold  { background: rgba(255, 184, 0, 0.15); }
+    .theme-pink  { background: rgba(255, 42, 109, 0.15); }
+    .theme-purple{ background: rgba(157, 78, 221, 0.15); }
+    .theme-teal  { background: rgba(0, 217, 245, 0.15); }
+
+    /* Event detail row */
+    .event-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+      padding: 32px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+    }
+
+    .highlight-item { display: flex; gap: 16px; align-items: flex-start; }
+    .highlight-icon { font-size: 1.8rem; }
+    .highlight-title { font-size: 0.92rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .highlight-desc  { font-size: 0.82rem; color: var(--text-muted); }
+
+    @media (max-width: 600px) {
+      .event-highlights { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">N</div>
+        <div><span class="logo-text">NEXUS</span><span class="logo-sub">Technical Symposium</span></div>
+      </a>
+      <ul class="nav-links" id="nav-menu" role="menubar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html" class="active">Events</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="register.html" class="nav-cta">Register Now →</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- PAGE HERO -->
+    <header class="page-hero" role="banner">
+      <div class="container">
+        <span class="section-label">🗓 September 12–13, 2025</span>
+        <h1 id="page-title" class="section-title" style="font-size:clamp(2.5rem,5vw,4rem); letter-spacing:-1px;">
+          Explore <span class="text-gradient">All Events</span>
+        </h1>
+        <p class="section-subtitle" style="margin-bottom:0;">
+          50+ events across 8 technical domains. Something exciting for every participant.
+        </p>
+      </div>
+    </header>
+
+    <!-- EVENTS SECTION -->
+    <section id="events-list" aria-labelledby="events-heading">
+      <div class="container">
+        <!-- Filter Bar -->
+        <div class="events-filter" role="group" aria-label="Filter events">
+          <button class="filter-btn active" data-cat="all" id="filter-all">All Events</button>
+          <button class="filter-btn" data-cat="competitive" id="filter-comp">Competitive</button>
+          <button class="filter-btn" data-cat="workshop" id="filter-ws">Workshops</button>
+          <button class="filter-btn" data-cat="non-technical" id="filter-nt">Non-Technical</button>
+          <button class="filter-btn" data-cat="online" id="filter-online">Online</button>
+        </div>
+
+        <!-- Events Grid -->
+        <div class="events-grid" id="events-grid" aria-label="Events listing">
+
+          <!-- Card 1: Hackathon -->
+          <article class="event-card" data-cat="competitive" aria-label="Hackathon event">
+            <div class="prize-ribbon">₹50,000</div>
+            <div class="event-card-header">
+              <div class="event-icon theme-blue">🤖</div>
+              <span class="badge badge-primary">Competitive</span>
+            </div>
+            <div class="event-card-body">
+              <h2 class="event-card-title">NEXUS Hackathon 2025</h2>
+              <p class="event-card-desc">Build solutions in 24 hours for real-world problems. Open to teams of 2–4 members.</p>
+              <div class="event-meta">
+                <div class="event-meta-item"><span class="event-meta-icon">📅</span> Sept 12, 9 AM – Sept 13, 9 AM</div>
+                <div class="event-meta-item"><span class="event-meta-icon">📍</span> Main Auditorium Hall</div>
+                <div class="event-meta-item"><span class="event-meta-icon">👥</span> Team (2–4 members)</div>
+              </div>
+            </div>
+            <div class="event-card-footer">
+              <span class="seats-info">Seats: <strong>48 left</strong> / 120</span>
+              <a href="register.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Register</a>
+            </div>
+          </article>
+
+          <!-- Card 2: CTF -->
+          <article class="event-card" data-cat="competitive" aria-label="CTF Capture The Flag event">
+            <div class="prize-ribbon">₹20,000</div>
+            <div class="event-card-header">
+              <div class="event-icon theme-red">🔐</div>
+              <span class="badge badge-accent">Cybersecurity</span>
+            </div>
+            <div class="event-card-body">
+              <h2 class="event-card-title">Capture The Flag (CTF)</h2>
+              <p class="event-card-desc">Test your ethical hacking, reverse engineering, and forensics skills in this premier CTF challenge.</p>
+              <div class="event-meta">
+                <div class="event-meta-item"><span class="event-meta-icon">📅</span> Sept 12, 10 AM – 6 PM</div>
+                <div class="event-meta-item"><span class="event-meta-icon">📍</span> CS Lab Block — Room 301</div>
+                <div class="event-meta-item"><span class="event-meta-icon">👥</span> Individual / Team (≤3)</div>
+              </div>
+            </div>
+            <div class="event-card-footer">
+              <span class="seats-info">Seats: <strong>22 left</strong> / 80</span>
+              <a href="register.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Register</a>
+            </div>
+          </article>
+
+          <!-- Card 3: Coding Contest -->
+          <article class="event-card" data-cat="competitive" aria-label="Competitive coding event">
+            <div class="prize-ribbon">₹10,000</div>
+            <div class="event-card-header">
+              <div class="event-icon theme-cyan">💻</div>
+              <span class="badge badge-secondary">DSA/CP</span>
+            </div>
+            <div class="event-card-body">
+              <h2 class="event-card-title">Code Clash</h2>
+              <p class="event-card-desc">Competitive programming contest with 5 algorithmic problems of varying difficulty on a live leaderboard.</p>
+              <div class="event-meta">
+                <div class="event-meta-item"><span class="event-meta-icon">📅</span> Sept 12, 11 AM – 2 PM</div>
+                <div class="event-meta-item"><span class="event-meta-icon">📍</span> IT Lab — Room 204</div>
+                <div class="event-meta-item"><span class="event-meta-icon">👥</span> Individual</div>
+              </div>
+            </div>
+            <div class="event-card-footer">
+              <span class="seats-info">Seats: <strong>60 left</strong> / 150</span>
+              <a href="register.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Register</a>
+            </div>
+          </article>
+
+          <!-- Card 4: Project Expo -->
+          <article class="event-card" data-cat="competitive" aria-label="Project Expo event">
+            <div class="prize-ribbon">₹30,000</div>
+            <div class="event-card-header">
+              <div class="event-icon theme-green">🚀</div>
+              <span class="badge badge-success">Innovation</span>
+            </div>
+            <div class="event-card-body">
+              <h2 class="event-card-title">Project Expo 2025</h2>
+              <p class="event-card-desc">Showcase your semester project or prototype. Evaluated by industry judges for innovation, impact, and execution.</p>
+              <div class="event-meta">
+                <div class="event-meta-item"><span class="event-meta-icon">📅</span> Sept 13, 10 AM – 4 PM</div>
+                <div class="event-meta-item"><span class="event-meta-icon">📍</span> Seminar Hall A</div>
+                <div class="event-meta-item"><span class="event-meta-icon">👥</span> Team (1–3 members)</div>
+              </div>
+            </div>
+            <div class="event-card-footer">
+              <span class="seats-info">Seats: <strong>35 left</strong> / 60</span>
+              <a href="register.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Register</a>
+            </div>
+          </article>
+
+          <!-- Card 5: AI/ML Workshop -->
+          <article class="event-card" data-cat="workshop" aria-label="AI ML Workshop">
+            <div class="event-card-header">
+              <div class="event-icon theme-purple">🧠</div>
+              <span class="badge badge-primary">Workshop</span>
+            </div>
+            <div class="event-card-body">
+              <h2 class="event-card-title">AI/ML Bootcamp</h2>
+              <p class="event-card-desc">Hands-on workshop on building machine learning models using Python, Scikit-learn, and TensorFlow.</p>
+              <div class="event-meta">
+                <div class="event-meta-item"><span class="event-meta-icon">📅</span> Sept 12, 2 PM – 5 PM</div>
+                <div class="event-meta-item"><span class="event-meta-icon">📍</span> AI Research Lab</div>
+                <div class="event-meta-item"><span class="event-meta-icon">👥</span> Individual (50 seats)</div>
+              </div>
+            </div>
+            <div class="event-card-footer">
+              <span class="seats-info">Seats: <strong>18 left</strong> / 50</span>
+              <a href="register.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Register</a>
+            </div>
+          </article>
+
+          <!-- Card 6: Robotics -->
+          <article class="event-card" data-cat="competitive" aria-label="Robotics Challenge">
+            <div class="prize-ribbon">₹15,000</div>
+            <div class="event-card-header">
+              <div class="event-icon theme-gold">🦾</div>
+              <span class="badge badge-warning">Robotics</span>
+            </div>
+            <div class="event-card-body">
+              <h2 class="event-card-title">Robo Wars</h2>
+              <p class="event-card-desc">Build and battle your robot in an arena. Mechanical engineering meets real-time strategy.</p>
+              <div class="event-meta">
+                <div class="event-meta-item"><span class="event-meta-icon">📅</span> Sept 13, 9 AM – 3 PM</div>
+                <div class="event-meta-item"><span class="event-meta-icon">📍</span> Mech Arena — Ground Floor</div>
+                <div class="event-meta-item"><span class="event-meta-icon">👥</span> Team (2–5 members)</div>
+              </div>
+            </div>
+            <div class="event-card-footer">
+              <span class="seats-info">Seats: <strong>12 left</strong> / 40</span>
+              <a href="register.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Register</a>
+            </div>
+          </article>
+
+          <!-- Card 7: Quiz Bowl -->
+          <article class="event-card" data-cat="competitive" aria-label="Technical Quiz">
+            <div class="prize-ribbon">₹5,000</div>
+            <div class="event-card-header">
+              <div class="event-icon theme-teal">🧩</div>
+              <span class="badge badge-secondary">Quiz</span>
+            </div>
+            <div class="event-card-body">
+              <h2 class="event-card-title">Tech Quiz Bowl</h2>
+              <p class="event-card-desc">Fast-paced technical quiz covering CS fundamentals, current affairs in tech, and brain teasers.</p>
+              <div class="event-meta">
+                <div class="event-meta-item"><span class="event-meta-icon">📅</span> Sept 12, 10 AM – 12 PM</div>
+                <div class="event-meta-item"><span class="event-meta-icon">📍</span> Seminar Hall B</div>
+                <div class="event-meta-item"><span class="event-meta-icon">👥</span> Team (2 members)</div>
+              </div>
+            </div>
+            <div class="event-card-footer">
+              <span class="seats-info">Seats: <strong>30 left</strong> / 80</span>
+              <a href="register.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Register</a>
+            </div>
+          </article>
+
+          <!-- Card 8: Web Dev Workshop -->
+          <article class="event-card" data-cat="workshop" aria-label="Web Development Workshop">
+            <div class="event-card-header">
+              <div class="event-icon theme-pink">🌐</div>
+              <span class="badge badge-primary">Workshop</span>
+            </div>
+            <div class="event-card-body">
+              <h2 class="event-card-title">Full-Stack Dev Workshop</h2>
+              <p class="event-card-desc">Build a complete full-stack web app using React, Node.js, and MongoDB in one session.</p>
+              <div class="event-meta">
+                <div class="event-meta-item"><span class="event-meta-icon">📅</span> Sept 13, 2 PM – 5 PM</div>
+                <div class="event-meta-item"><span class="event-meta-icon">📍</span> Web Dev Lab — Room 108</div>
+                <div class="event-meta-item"><span class="event-meta-icon">👥</span> Individual (40 seats)</div>
+              </div>
+            </div>
+            <div class="event-card-footer">
+              <span class="seats-info">Seats: <strong>25 left</strong> / 40</span>
+              <a href="register.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Register</a>
+            </div>
+          </article>
+
+          <!-- Card 9: Paper Presentation -->
+          <article class="event-card" data-cat="competitive" aria-label="Paper Presentation">
+            <div class="prize-ribbon">₹8,000</div>
+            <div class="event-card-header">
+              <div class="event-icon theme-blue">📄</div>
+              <span class="badge badge-primary">Research</span>
+            </div>
+            <div class="event-card-body">
+              <h2 class="event-card-title">Paper Presentation</h2>
+              <p class="event-card-desc">Present your research paper on any computer science or emerging technology topic to a panel of faculty and industry experts.</p>
+              <div class="event-meta">
+                <div class="event-meta-item"><span class="event-meta-icon">📅</span> Sept 13, 10 AM – 1 PM</div>
+                <div class="event-meta-item"><span class="event-meta-icon">📍</span> Conference Room</div>
+                <div class="event-meta-item"><span class="event-meta-icon">👥</span> Individual / Team (≤2)</div>
+              </div>
+            </div>
+            <div class="event-card-footer">
+              <span class="seats-info">Seats: <strong>15 left</strong> / 40</span>
+              <a href="register.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Register</a>
+            </div>
+          </article>
+
+          <!-- Card 10: Gaming -->
+          <article class="event-card" data-cat="non-technical" aria-label="E-Sports Gaming Event">
+            <div class="prize-ribbon">₹5,000</div>
+            <div class="event-card-header">
+              <div class="event-icon theme-pink">🎮</div>
+              <span class="badge badge-accent">E-Sports</span>
+            </div>
+            <div class="event-card-body">
+              <h2 class="event-card-title">E-Sports Championship</h2>
+              <p class="event-card-desc">Compete in BGMI and Valorant tournaments. The best gaming event of the symposium!</p>
+              <div class="event-meta">
+                <div class="event-meta-item"><span class="event-meta-icon">📅</span> Sept 12, 3 PM – 8 PM</div>
+                <div class="event-meta-item"><span class="event-meta-icon">📍</span> Gaming Arena — Block D</div>
+                <div class="event-meta-item"><span class="event-meta-icon">👥</span> Team (4–5 members)</div>
+              </div>
+            </div>
+            <div class="event-card-footer">
+              <span class="seats-info">Seats: <strong>20 left</strong> / 60</span>
+              <a href="register.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Register</a>
+            </div>
+          </article>
+
+          <!-- Card 11: Online Round -->
+          <article class="event-card" data-cat="online" aria-label="Online Prelim Round">
+            <div class="event-card-header">
+              <div class="event-icon theme-green">🌍</div>
+              <span class="badge badge-success">Online</span>
+            </div>
+            <div class="event-card-body">
+              <h2 class="event-card-title">Online Prelim Round</h2>
+              <p class="event-card-desc">Qualify for major events through the online elimination round. Top scorers advance to on-site finals.</p>
+              <div class="event-meta">
+                <div class="event-meta-item"><span class="event-meta-icon">📅</span> Aug 25–31, 2025</div>
+                <div class="event-meta-item"><span class="event-meta-icon">📍</span> Online (HackerRank Platform)</div>
+                <div class="event-meta-item"><span class="event-meta-icon">👥</span> Individual</div>
+              </div>
+            </div>
+            <div class="event-card-footer">
+              <span class="seats-info"><strong>Open</strong> — No limit</span>
+              <a href="register.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Register</a>
+            </div>
+          </article>
+
+          <!-- Card 12: Photography -->
+          <article class="event-card" data-cat="non-technical" aria-label="Photography Contest">
+            <div class="prize-ribbon">₹3,000</div>
+            <div class="event-card-header">
+              <div class="event-icon theme-gold">📷</div>
+              <span class="badge badge-warning">Creative</span>
+            </div>
+            <div class="event-card-body">
+              <h2 class="event-card-title">Tech Photography Contest</h2>
+              <p class="event-card-desc">Capture the theme "Technology and Humanity" through your lens. Best photo wins!</p>
+              <div class="event-meta">
+                <div class="event-meta-item"><span class="event-meta-icon">📅</span> Sept 12–13 (Submission by 5 PM)</div>
+                <div class="event-meta-item"><span class="event-meta-icon">📍</span> Campus-wide</div>
+                <div class="event-meta-item"><span class="event-meta-icon">👥</span> Individual</div>
+              </div>
+            </div>
+            <div class="event-card-footer">
+              <span class="seats-info">Open — Any NEXUS participant</span>
+              <a href="register.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Register</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Key Highlights -->
+        <div class="event-highlights" aria-label="Event highlights">
+          <div class="highlight-item">
+            <div class="highlight-icon">⚡</div>
+            <div>
+              <div class="highlight-title">Real-time Leaderboard</div>
+              <div class="highlight-desc">Live tracking of scores and rankings for all competitive events.</div>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🎖️</div>
+            <div>
+              <div class="highlight-title">Participation Certificates</div>
+              <div class="highlight-desc">Every participant gets a digitally verified certificate.</div>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🍽️</div>
+            <div>
+              <div class="highlight-title">Free Lunch (Day 1)</div>
+              <div class="highlight-desc">Complimentary lunch for all registered participants on Day 1.</div>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🚌</div>
+            <div>
+              <div class="highlight-title">Transportation</div>
+              <div class="highlight-desc">Buses available from 6 major city points both days.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="display:inline-flex;margin-bottom:0;">
+            <div class="logo-icon">N</div>
+            <div><span class="logo-text">NEXUS</span><span class="logo-sub">2025</span></div>
+          </a>
+          <p>India's premier technical symposium for the next generation of technologists.</p>
+        </div>
+        <div class="footer-col"><h4 class="footer-col-title">Navigation</h4><ul>
+          <li><a href="index.html">Home</a></li><li><a href="events.html">Events</a></li>
+          <li><a href="schedule.html">Schedule</a></li><li><a href="register.html">Register</a></li>
+          <li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4 class="footer-col-title">Events</h4><ul>
+          <li><a href="#">Hackathon</a></li><li><a href="#">CTF</a></li>
+          <li><a href="#">Code Clash</a></li><li><a href="#">Project Expo</a></li>
+          <li><a href="#">Workshops</a></li></ul></div>
+        <div class="footer-col"><h4 class="footer-col-title">Support</h4><ul>
+          <li><a href="contact.html">Contact Us</a></li><li><a href="#">FAQ</a></li>
+          <li><a href="#">Rulebook</a></li><li><a href="#">Brochure</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS Technical Symposium. All rights reserved.</p>
+        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger
+    const toggle = document.getElementById('nav-toggle');
+    const menu   = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', menu.classList.contains('open'));
+    });
+
+    // Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const eventCards = document.querySelectorAll('.event-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.cat;
+        eventCards.forEach(card => {
+          const show = cat === 'all' || card.dataset.cat === cat;
+          card.style.display = show ? 'flex' : 'none';
+          if (show) {
+            card.style.animation = 'none';
+            card.offsetHeight; // reflow
+            card.style.animation = 'fadeIn 0.4s ease';
+          }
+        });
+      });
+    });
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').style.background =
+        window.scrollY > 50 ? 'rgba(10,10,26,0.98)' : 'rgba(10,10,26,0.9)';
+    });
+  </script>
+</body>
+</html>

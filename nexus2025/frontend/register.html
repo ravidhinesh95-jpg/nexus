@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Register for NEXUS 2025 Technical Symposium — Sept 12–13, 2025. Complete your participant registration form online." />
+  <title>Register | NEXUS 2025 Technical Symposium</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Internal CSS — Register page specific -->
+  <style>
+    /* Fee display cards */
+    .fee-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .fee-card {
+      text-align: center;
+      padding: 20px 16px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--dark-border);
+      background: var(--dark);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .fee-card:hover { border-color: var(--primary); background: rgba(0,245,160,0.05); }
+    .fee-card.selected { border-color: var(--primary); background: rgba(0,245,160,0.12); box-shadow: 0 0 0 3px rgba(0,245,160,0.2); }
+
+    .fee-amount { font-size: 1.6rem; font-weight: 800; color: var(--text-primary); display: block; }
+    .fee-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+
+    .fee-tag {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 999px;
+      background: rgba(16,185,129,0.15); color: var(--success);
+      margin-bottom: 8px;
+    }
+
+    /* Password strength */
+    .strength-bar { margin-top: 8px; }
+    .strength-segments { display: flex; gap: 4px; margin-bottom: 4px; }
+    .strength-seg { flex: 1; height: 4px; border-radius: 2px; background: var(--dark-border); transition: background 0.3s; }
+    .strength-label { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* Terms box */
+    .terms-box {
+      background: var(--dark);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      max-height: 120px;
+      overflow-y: auto;
+      line-height: 1.7;
+    }
+
+    /* Success overlay hint */
+    .reg-note {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: rgba(16,185,129,0.08);
+      border: 1px solid rgba(16,185,129,0.25);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .reg-note .icon { font-size: 1.1rem; }
+
+    @media (max-width: 600px) {
+      .fee-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">N</div>
+        <div><span class="logo-text">NEXUS</span><span class="logo-sub">Technical Symposium</span></div>
+      </a>
+      <ul class="nav-links" id="nav-menu" role="menubar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="register.html" class="active">Register</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="register.html" class="nav-cta">Register Now →</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="form-page" aria-label="Registration page">
+    <div class="form-container">
+
+      <!-- Form Header -->
+      <div class="form-header">
+        <span class="section-label" style="margin-bottom:16px;">📝 Participant Registration</span>
+        <h1 id="page-title" class="section-title" style="font-size:clamp(2rem,4vw,2.8rem);">
+          Register for <span class="text-gradient">NEXUS 2025</span>
+        </h1>
+        <p style="color:var(--text-muted); font-size:0.95rem; margin-top:8px;">
+          Complete the form below to secure your spot at India's premier technical symposium.
+        </p>
+      </div>
+
+      <!-- Registration Form Wrapper -->
+      <div class="form-wrapper">
+
+        <!-- Multi-step Progress -->
+        <div class="form-progress" aria-label="Registration progress">
+          <div class="progress-steps">
+            <div class="progress-step active" id="step-1-indicator">
+              <div class="step-circle">1</div>
+              <span class="step-label">Personal Info</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="progress-step" id="step-2-indicator">
+              <div class="step-circle">2</div>
+              <span class="step-label">Academic</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="progress-step" id="step-3-indicator">
+              <div class="step-circle">3</div>
+              <span class="step-label">Events</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="progress-step" id="step-4-indicator">
+              <div class="step-circle">4</div>
+              <span class="step-label">Payment</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─────────────────────────────────────
+             THE REGISTRATION FORM (20+ inputs)
+        ───────────────────────────────────────── -->
+        <form id="registration-form" novalidate
+              aria-label="NEXUS 2025 participant registration form">
+
+          <div class="form-body">
+
+            <!-- REG NOTE -->
+            <div class="reg-note">
+              <span class="icon">✅</span>
+              <span>Early Bird Discount active — Register before <strong>Aug 31, 2025</strong> and save ₹200 on your fee.</span>
+            </div>
+
+            <!-- ═══ SECTION 1: PERSONAL INFO ═══ -->
+            <fieldset class="form-section" id="section-personal">
+              <legend class="form-section-title">
+                <span class="fsec-icon">👤</span> Personal Information
+              </legend>
+
+              <div class="form-grid">
+                <!-- 1. Text — Full Name -->
+                <div class="form-group">
+                  <label for="full-name">Full Name <span class="req">*</span></label>
+                  <div class="input-icon-wrapper">
+                    <span class="input-icon">👤</span>
+                    <input type="text" id="full-name" name="full_name"
+                           placeholder="e.g. Dharshan Kumar" required
+                           maxlength="80" autocomplete="name"
+                           pattern="[A-Za-z\s]+"
+                           aria-required="true"
+                           aria-describedby="name-error" />
+                  </div>
+                  <span class="field-error" id="name-error">Please enter a valid name (letters only)</span>
+                </div>
+
+                <!-- 2. Email -->
+                <div class="form-group">
+                  <label for="email">Email Address <span class="req">*</span></label>
+                  <div class="input-icon-wrapper">
+                    <span class="input-icon">📧</span>
+                    <input type="email" id="email" name="email"
+                           placeholder="you@example.com" required
+                           autocomplete="email" maxlength="100"
+                           aria-required="true" />
+                  </div>
+                  <span class="field-helper">Registration confirmation will be sent here</span>
+                </div>
+
+                <!-- 3. Tel -->
+                <div class="form-group">
+                  <label for="phone">Phone Number <span class="req">*</span></label>
+                  <div class="input-icon-wrapper">
+                    <span class="input-icon">📱</span>
+                    <input type="tel" id="phone" name="phone"
+                           placeholder="10-digit mobile number" required
+                           maxlength="10" pattern="[6-9][0-9]{9}"
+                           autocomplete="tel-national"
+                           aria-required="true" />
+                  </div>
+                  <span class="field-error">Enter valid 10-digit Indian mobile number</span>
+                </div>
+
+                <!-- 4. Date -->
+                <div class="form-group">
+                  <label for="dob">Date of Birth <span class="req">*</span></label>
+                  <input type="date" id="dob" name="dob"
+                         required min="1995-01-01" max="2008-12-31"
+                         aria-required="true" />
+                </div>
+
+                <!-- 5. Password -->
+                <div class="form-group full">
+                  <label for="password">Create Password <span class="req">*</span> <span class="hint">(for participant portal)</span></label>
+                  <div class="input-icon-wrapper">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" id="password" name="password"
+                           placeholder="Min 8 chars, 1 number, 1 special char" required
+                           minlength="8" maxlength="50"
+                           aria-required="true" aria-describedby="password-strength" />
+                  </div>
+                  <div class="strength-bar" id="password-strength" aria-label="Password strength">
+                    <div class="strength-segments">
+                      <div class="strength-seg" id="seg-1"></div>
+                      <div class="strength-seg" id="seg-2"></div>
+                      <div class="strength-seg" id="seg-3"></div>
+                      <div class="strength-seg" id="seg-4"></div>
+                    </div>
+                    <span class="strength-label" id="strength-text">Enter password to see strength</span>
+                  </div>
+                </div>
+
+                <!-- 6. Gender — Radio -->
+                <div class="form-group full">
+                  <label>Gender <span class="req">*</span></label>
+                  <div class="radio-group" role="radiogroup" aria-label="Gender">
+                    <label class="radio-item">
+                      <input type="radio" name="gender" value="male" required aria-required="true" /> <span>♂ Male</span>
+                    </label>
+                    <label class="radio-item">
+                      <input type="radio" name="gender" value="female" /> <span>♀ Female</span>
+                    </label>
+                    <label class="radio-item">
+                      <input type="radio" name="gender" value="non-binary" /> <span>⚧ Non-binary</span>
+                    </label>
+                    <label class="radio-item">
+                      <input type="radio" name="gender" value="prefer-not" /> <span>🔒 Prefer not to say</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- ═══ SECTION 2: ACADEMIC INFO ═══ -->
+            <fieldset class="form-section" id="section-academic">
+              <legend class="form-section-title">
+                <span class="fsec-icon">🎓</span> Academic Information
+              </legend>
+
+              <div class="form-grid">
+                <!-- 7. Select — Institution -->
+                <div class="form-group">
+                  <label for="institution">Institution Type <span class="req">*</span></label>
+                  <select id="institution" name="institution_type" required aria-required="true">
+                    <option value="" disabled selected>Select institution type</option>
+                    <option value="engineering">Engineering College</option>
+                    <option value="arts-science">Arts &amp; Science College</option>
+                    <option value="polytechnic">Polytechnic</option>
+                    <option value="deemed">Deemed University</option>
+                    <option value="iit-nit">IIT / NIT</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <!-- 8. Text — College Name -->
+                <div class="form-group">
+                  <label for="college-name">College / University Name <span class="req">*</span></label>
+                  <input type="text" id="college-name" name="college_name"
+                         placeholder="e.g. Anna University" required
+                         maxlength="100" aria-required="true" />
+                </div>
+
+                <!-- 9. Select — Department -->
+                <div class="form-group">
+                  <label for="department">Department <span class="req">*</span></label>
+                  <select id="department" name="department" required aria-required="true">
+                    <option value="" disabled selected>Select department</option>
+                    <option value="cse">Computer Science &amp; Engg.</option>
+                    <option value="it">Information Technology</option>
+                    <option value="ece">Electronics &amp; Communication</option>
+                    <option value="eee">Electrical &amp; Electronics</option>
+                    <option value="mech">Mechanical Engineering</option>
+                    <option value="civil">Civil Engineering</option>
+                    <option value="aids">AI &amp; Data Science</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <!-- 10. Select — Year -->
+                <div class="form-group">
+                  <label for="year">Current Year of Study <span class="req">*</span></label>
+                  <select id="year" name="year_of_study" required aria-required="true">
+                    <option value="" disabled selected>Select year</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                    <option value="pg">PG / Masters</option>
+                  </select>
+                </div>
+
+                <!-- 11. Number — Roll No -->
+                <div class="form-group">
+                  <label for="roll-number">Roll / Register Number <span class="req">*</span></label>
+                  <input type="text" id="roll-number" name="roll_number"
+                         placeholder="e.g. 22CS1001" required
+                         maxlength="20" aria-required="true" />
+                </div>
+
+                <!-- 12. URL — LinkedIn -->
+                <div class="form-group">
+                  <label for="linkedin">LinkedIn Profile <span class="hint">(optional)</span></label>
+                  <div class="input-icon-wrapper">
+                    <span class="input-icon">💼</span>
+                    <input type="url" id="linkedin" name="linkedin_url"
+                           placeholder="https://linkedin.com/in/yourname"
+                           pattern="https://.*" maxlength="200" />
+                  </div>
+                </div>
+
+                <!-- 13. Range — CGPA -->
+                <div class="form-group full">
+                  <label for="cgpa">Current CGPA / Percentage <span class="hint">— drag to select</span></label>
+                  <div class="range-wrapper">
+                    <input type="range" id="cgpa" name="cgpa"
+                           min="0" max="10" step="0.1" value="7.5"
+                           aria-valuemin="0" aria-valuemax="10"
+                           oninput="document.getElementById('cgpa-val').textContent=parseFloat(this.value).toFixed(1)" />
+                    <span class="range-value" id="cgpa-val">7.5</span>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- ═══ SECTION 3: EVENT SELECTION ═══ -->
+            <fieldset class="form-section" id="section-events">
+              <legend class="form-section-title">
+                <span class="fsec-icon">🎯</span> Event Selection &amp; Preferences
+              </legend>
+
+              <!-- 14. Checkbox — Events -->
+              <div class="form-group full mb-24">
+                <label>Select Events to Participate In <span class="req">*</span> <span class="hint">(max 3)</span></label>
+                <div class="checkbox-group" id="events-checkbox" role="group" aria-label="Event selection">
+                  <label class="checkbox-item"><input type="checkbox" name="events" value="hackathon" id="cb-hack" /> <span>🤖 Hackathon</span></label>
+                  <label class="checkbox-item"><input type="checkbox" name="events" value="ctf" id="cb-ctf" /> <span>🔐 CTF</span></label>
+                  <label class="checkbox-item"><input type="checkbox" name="events" value="code-clash" id="cb-code" checked /> <span>💻 Code Clash</span></label>
+                  <label class="checkbox-item"><input type="checkbox" name="events" value="project-expo" id="cb-expo" /> <span>🚀 Project Expo</span></label>
+                  <label class="checkbox-item"><input type="checkbox" name="events" value="quiz" id="cb-quiz" /> <span>🧩 Tech Quiz</span></label>
+                  <label class="checkbox-item"><input type="checkbox" name="events" value="paper" id="cb-paper" /> <span>📄 Paper Presentation</span></label>
+                  <label class="checkbox-item"><input type="checkbox" name="events" value="robowar" id="cb-robo" /> <span>🦾 Robo Wars</span></label>
+                  <label class="checkbox-item"><input type="checkbox" name="events" value="esports" id="cb-esport" /> <span>🎮 E-Sports</span></label>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <!-- 15. Select — T-Shirt Size -->
+                <div class="form-group">
+                  <label for="tshirt-size">T-Shirt Size <span class="req">*</span></label>
+                  <select id="tshirt-size" name="tshirt_size" required aria-required="true">
+                    <option value="" disabled selected>Select size</option>
+                    <option value="xs">XS (Extra Small)</option>
+                    <option value="s">S (Small)</option>
+                    <option value="m" selected>M (Medium)</option>
+                    <option value="l">L (Large)</option>
+                    <option value="xl">XL (Extra Large)</option>
+                    <option value="xxl">XXL (Double XL)</option>
+                  </select>
+                </div>
+
+                <!-- 16. Select — Meal Preference -->
+                <div class="form-group">
+                  <label for="meal-pref">Meal Preference <span class="req">*</span></label>
+                  <select id="meal-pref" name="meal_preference" required aria-required="true">
+                    <option value="" disabled selected>Select preference</option>
+                    <option value="veg" selected>🌱 Vegetarian</option>
+                    <option value="non-veg">🍗 Non-Vegetarian</option>
+                    <option value="vegan">🥦 Vegan</option>
+                    <option value="jain">🕉️ Jain</option>
+                  </select>
+                </div>
+
+                <!-- 17. Select — How did you hear -->
+                <div class="form-group">
+                  <label for="referral">How did you hear about NEXUS?</label>
+                  <select id="referral" name="referral_source">
+                    <option value="" disabled selected>Select source</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="friend">Friend / Colleague</option>
+                    <option value="professor">Professor / Faculty</option>
+                    <option value="poster">Campus Poster</option>
+                    <option value="website">College Website</option>
+                  </select>
+                </div>
+
+                <!-- 18. Number — Team Members -->
+                <div class="form-group">
+                  <label for="team-size">Team Size <span class="hint">(if applicable)</span></label>
+                  <input type="number" id="team-size" name="team_size"
+                         min="1" max="5" value="1"
+                         placeholder="1 to 5 members" />
+                </div>
+
+                <!-- 19. Text — Team Name -->
+                <div class="form-group full">
+                  <label for="team-name">Team Name <span class="hint">(if applicable)</span></label>
+                  <input type="text" id="team-name" name="team_name"
+                         placeholder="Your awesome team name" maxlength="50" />
+                </div>
+
+                <!-- 20. Color — Badge Color -->
+                <div class="form-group">
+                  <label for="badge-color">Badge Accent Color <span class="hint">(personalize your lanyard)</span></label>
+                  <div class="color-wrapper">
+                    <input type="color" id="badge-color" name="badge_color" value="#6C63FF" />
+                    <span class="color-label">Choose your badge color</span>
+                  </div>
+                </div>
+
+                <!-- 21. File — Photo ID -->
+                <div class="form-group">
+                  <label for="photo-id">Upload College ID <span class="req">*</span></label>
+                  <div class="file-upload">
+                    <input type="file" id="photo-id" name="photo_id"
+                           accept="image/*,.pdf" required aria-required="true"
+                           aria-describedby="file-hint" />
+                    <div class="file-upload-label">
+                      <span class="file-upload-icon">📎</span>
+                      <span class="file-upload-text">
+                        <strong>Click to upload</strong> ID card<br>
+                        JPG, PNG, PDF · Max 2MB
+                      </span>
+                    </div>
+                  </div>
+                  <span class="field-helper" id="file-hint">Required for on-site verification</span>
+                </div>
+
+                <!-- 22. Textarea — Special Requirements -->
+                <div class="form-group full">
+                  <label for="special-req">Special Requirements / Accessibility Needs <span class="hint">(optional)</span></label>
+                  <textarea id="special-req" name="special_requirements"
+                            placeholder="Mention any dietary restrictions, physical accessibility needs, or other requirements…"
+                            maxlength="500" rows="4"></textarea>
+                  <span class="field-helper">Max 500 characters</span>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- ═══ SECTION 4: PAYMENT & CONSENT ═══ -->
+            <fieldset class="form-section" id="section-payment">
+              <legend class="form-section-title">
+                <span class="fsec-icon">💳</span> Registration Fee &amp; Consent
+              </legend>
+
+              <!-- Fee Selection -->
+              <div class="form-group full mb-32">
+                <label>Registration Category <span class="req">*</span></label>
+                <div class="fee-grid">
+                  <div class="fee-card selected" onclick="selectFee(this, 'early-bird')" role="button" tabindex="0">
+                    <span class="fee-tag">🔥 Early Bird</span>
+                    <span class="fee-amount">₹299</span>
+                    <span class="fee-label">Register by Aug 31</span>
+                  </div>
+                  <div class="fee-card" onclick="selectFee(this, 'standard')" role="button" tabindex="0">
+                    <span class="fee-tag" style="background:rgba(108,99,255,0.15);color:var(--primary-light);">Standard</span>
+                    <span class="fee-amount">₹499</span>
+                    <span class="fee-label">Regular registration</span>
+                  </div>
+                  <div class="fee-card" onclick="selectFee(this, 'premium')" role="button" tabindex="0">
+                    <span class="fee-tag" style="background:rgba(245,158,11,0.15);color:var(--warning);">⭐ VIP Pass</span>
+                    <span class="fee-amount">₹799</span>
+                    <span class="fee-label">Priority seating + Merch</span>
+                  </div>
+                </div>
+                <input type="hidden" id="fee-category" name="fee_category" value="early-bird" />
+              </div>
+
+              <!-- 23. Search — Referral Code -->
+              <div class="form-group mb-24">
+                <label for="coupon-code">Referral / Coupon Code <span class="hint">(optional)</span></label>
+                <div class="input-icon-wrapper">
+                  <span class="input-icon">🎟️</span>
+                  <input type="search" id="coupon-code" name="coupon_code"
+                         placeholder="Enter referral code for extra discount"
+                         maxlength="20" />
+                </div>
+              </div>
+
+              <!-- 24. Readonly — Event ID -->
+              <div class="form-grid mb-24">
+                <div class="form-group">
+                  <label for="event-id">Event Reference ID</label>
+                  <input type="text" id="event-id" name="event_ref_id"
+                         value="NEXUS-2025-REG" readonly
+                         aria-readonly="true" />
+                  <span class="field-helper">Auto-generated — do not modify</span>
+                </div>
+
+                <!-- 25. Disabled — Quota (Inline CSS example) -->
+                <div class="form-group">
+                  <label for="quota-type" style="color: var(--text-muted);">Quota Type</label>
+                  <input type="text" id="quota-type" name="quota_type"
+                         value="Open Merit" disabled aria-disabled="true"
+                         style="font-style: italic;" />
+                  <span class="field-helper">Set automatically by system</span>
+                </div>
+              </div>
+
+              <!-- Terms & Conditions Text -->
+              <div class="form-group full mb-24">
+                <label>Terms &amp; Conditions</label>
+                <div class="terms-box" tabindex="0" aria-label="Terms and conditions">
+                  <p><strong>1. Eligibility:</strong> Open to all students enrolled in recognized colleges or universities. Proof of student ID is mandatory.</p>
+                  <p style="margin-top:8px;"><strong>2. Conduct:</strong> Participants must maintain professional conduct. Any form of misconduct will lead to immediate disqualification.</p>
+                  <p style="margin-top:8px;"><strong>3. Fees:</strong> Registration fees are non-refundable once confirmed. Transfers to another participant may be allowed within 7 days.</p>
+                  <p style="margin-top:8px;"><strong>4. Intellectual Property:</strong> Projects submitted for Hackathon and Project Expo remain the property of the creators. NEXUS 2025 may showcase them for promotional purposes.</p>
+                  <p style="margin-top:8px;"><strong>5. Photography:</strong> NEXUS may use event photographs and videos for marketing materials. Participants grant consent by registering.</p>
+                </div>
+              </div>
+
+              <!-- 26. Checkbox — Agree Terms -->
+              <div class="form-group full mb-16">
+                <label class="checkbox-item" style="border: none; padding: 0; background: none;">
+                  <input type="checkbox" id="agree-terms" name="agree_terms" required aria-required="true" />
+                  <span>I have read and agree to the <a href="#" style="color:var(--primary-light);">Terms &amp; Conditions</a> and <a href="#" style="color:var(--primary-light);">Privacy Policy</a> <span style="color:var(--accent);">*</span></span>
+                </label>
+              </div>
+
+              <!-- 27. Checkbox — Newsletter -->
+              <div class="form-group full mb-24">
+                <label class="checkbox-item" style="border: none; padding: 0; background: none;">
+                  <input type="checkbox" id="newsletter" name="newsletter" checked />
+                  <span>Subscribe to updates about NEXUS events and future symposiums</span>
+                </label>
+              </div>
+
+              <!-- 28. Toggle — On-site presence -->
+              <div class="form-group full mb-24">
+                <label>Will you attend on-site? <span class="req">*</span></label>
+                <div class="toggle-wrapper">
+                  <label class="toggle" for="on-site-toggle" aria-label="On-site attendance toggle">
+                    <input type="checkbox" id="on-site-toggle" name="on_site" value="yes" checked />
+                    <span class="toggle-slider"></span>
+                  </label>
+                  <span class="toggle-text">Yes, I will attend in person at the campus venue</span>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Form Footer / Submit -->
+          <div class="form-footer">
+            <div class="form-footer-info">
+              <span>🔒</span>
+              <span>Your data is encrypted and protected. We never share your info with third parties.</span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" id="submit-btn"
+                    aria-label="Submit registration form">
+              ⚡ Complete Registration →
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="display:inline-flex;margin-bottom:0;">
+            <div class="logo-icon">N</div>
+            <div><span class="logo-text">NEXUS</span><span class="logo-sub">2025</span></div>
+          </a>
+          <p>India's premier technical symposium for the next generation of technologists.</p>
+        </div>
+        <div class="footer-col"><h4 class="footer-col-title">Navigation</h4><ul>
+          <li><a href="index.html">Home</a></li><li><a href="events.html">Events</a></li>
+          <li><a href="schedule.html">Schedule</a></li><li><a href="register.html">Register</a></li>
+          <li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4 class="footer-col-title">Events</h4><ul>
+          <li><a href="events.html">Hackathon</a></li><li><a href="events.html">CTF</a></li>
+          <li><a href="events.html">Code Clash</a></li><li><a href="events.html">Project Expo</a></li></ul></div>
+        <div class="footer-col"><h4 class="footer-col-title">Support</h4><ul>
+          <li><a href="contact.html">Contact</a></li><li><a href="#">FAQ</a></li><li><a href="#">Rulebook</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS Technical Symposium. All rights reserved.</p>
+        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Hamburger ──
+    const toggle = document.getElementById('nav-toggle');
+    const menu   = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', menu.classList.contains('open'));
+    });
+
+    // ── Password Strength Indicator ──
+    document.getElementById('password').addEventListener('input', function () {
+      const val = this.value;
+      let strength = 0;
+      if (val.length >= 8)              strength++;
+      if (/[A-Z]/.test(val))            strength++;
+      if (/[0-9]/.test(val))            strength++;
+      if (/[^A-Za-z0-9]/.test(val))    strength++;
+
+      const colors  = ['#FF6B6B','#F59E0B','#6C63FF','#10B981'];
+      const labels  = ['Weak','Fair','Strong','Very Strong'];
+      const segs = document.querySelectorAll('.strength-seg');
+      segs.forEach((seg, i) => {
+        seg.style.background = i < strength ? colors[strength - 1] : 'var(--dark-border)';
+      });
+      document.getElementById('strength-text').textContent =
+        val.length === 0 ? 'Enter password to see strength' : labels[strength - 1] || 'Weak';
+      document.getElementById('strength-text').style.color =
+        val.length === 0 ? 'var(--text-muted)' : colors[strength - 1] || colors[0];
+    });
+
+    // ── Fee Card Selection ──
+    function selectFee(el, cat) {
+      document.querySelectorAll('.fee-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      document.getElementById('fee-category').value = cat;
+    }
+
+    // ── Max 3 events checkbox ──
+    const checkboxes = document.querySelectorAll('#events-checkbox input[type="checkbox"]');
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        const checked = Array.from(checkboxes).filter(c => c.checked);
+        if (checked.length > 3) { cb.checked = false; alert('You can select a maximum of 3 events.'); }
+      });
+    });
+
+    // ── Form Submit → POST to /api/register ──
+    document.getElementById('registration-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      // Basic client-side validation
+      if (!document.getElementById('agree-terms').checked) {
+        alert('Please agree to the Terms & Conditions to proceed.');
+        return;
+      }
+
+      const fullName = document.getElementById('full-name').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      if (!fullName || !email) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = '⏳ Submitting...';
+
+      try {
+        const formData = new FormData(this);
+
+        const res  = await fetch('/api/register', { method: 'POST', body: formData });
+        const data = await res.json();
+
+        if (data.success) {
+          // Redirect to confirmation page with reg_id
+          window.location.href = 'confirm.html?reg_id=' + encodeURIComponent(data.reg_id)
+            + '&name=' + encodeURIComponent(data.name)
+            + '&email=' + encodeURIComponent(data.email);
+        } else {
+          alert('Registration failed: ' + (data.error || 'Unknown error. Please try again.'));
+          btn.disabled = false;
+          btn.textContent = '⚡ Complete Registration →';
+        }
+      } catch (err) {
+        alert('Network error. Please check your connection and try again.');
+        btn.disabled = false;
+        btn.textContent = '⚡ Complete Registration →';
+      }
+    });
+
+    // ── Navbar scroll ──
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').style.background =
+        window.scrollY > 50 ? 'rgba(10,10,26,0.98)' : 'rgba(10,10,26,0.9)';
+    });
+  </script>
+</body>
+</html>

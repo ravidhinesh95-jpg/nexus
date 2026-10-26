@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact the NEXUS 2025 organizing team — get help with registration, event queries, sponsorships, and more." />
+  <title>Contact Us | NEXUS 2025 Technical Symposium</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Internal CSS — Contact page specific -->
+  <style>
+    /* FAQ Accordion */
+    .faq-list { margin-top: 48px; }
+
+    .faq-item {
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-item:hover { border-color: var(--glass-border); }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      cursor: pointer;
+      background: var(--dark-card);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      gap: 16px;
+      user-select: none;
+    }
+
+    .faq-chevron {
+      font-size: 0.85rem;
+      color: var(--primary-light);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      background: var(--dark);
+    }
+
+    .faq-answer p {
+      padding: 0 24px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .faq-item.open .faq-answer { max-height: 200px; padding: 16px 0; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-item.open .faq-question { color: var(--primary); }
+
+    /* Map placeholder */
+    .map-placeholder {
+      background: linear-gradient(135deg, rgba(0,245,160,0.08), rgba(0,217,245,0.05));
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 48px;
+    }
+
+    .map-placeholder h3 { font-size: 1.1rem; color: var(--text-primary); }
+    .map-placeholder p  { font-size: 0.85rem; color: var(--text-muted); text-align: center; max-width: 360px; }
+
+    /* Success toast */
+    #toast {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: linear-gradient(135deg, var(--success), #34D399);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 8px 32px rgba(16,185,129,0.4);
+      display: none;
+      align-items: center;
+      gap: 10px;
+      z-index: 9999;
+      animation: slideIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(120%); opacity: 0; }
+      to   { transform: translateX(0); opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Toast -->
+  <div id="toast" role="alert" aria-live="assertive">✅ Message sent! We'll reply within 24 hours.</div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">N</div>
+        <div><span class="logo-text">NEXUS</span><span class="logo-sub">Technical Symposium</span></div>
+      </a>
+      <ul class="nav-links" id="nav-menu" role="menubar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="register.html" class="nav-cta">Register Now →</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- PAGE HERO -->
+    <header class="page-hero" role="banner">
+      <div class="container">
+        <span class="section-label">📨 Get In Touch</span>
+        <h1 id="page-title" class="section-title" style="font-size:clamp(2.5rem,5vw,4rem); letter-spacing:-1px;">
+          Contact <span class="text-gradient">Our Team</span>
+        </h1>
+        <p class="section-subtitle" style="margin-bottom:0;">
+          Have questions about registration, events, or sponsorship? We're here to help.
+        </p>
+      </div>
+    </header>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- ─── Left — Info Card ─── -->
+          <aside class="contact-info-card" aria-label="Contact information">
+            <h2 class="contact-info-title">Talk to Us</h2>
+            <p class="contact-info-sub">
+              Our team of student organizers is available to assist you Mon–Sat, 9 AM–6 PM IST.
+            </p>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon">📧</div>
+              <div>
+                <div class="contact-detail-label">Email</div>
+                <div class="contact-detail-value">info@nexus2025.in</div>
+                <div class="contact-detail-value" style="color:var(--text-muted);font-size:0.8rem;">support@nexus2025.in</div>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon">📞</div>
+              <div>
+                <div class="contact-detail-label">Phone</div>
+                <div class="contact-detail-value">+91 98765 43210</div>
+                <div class="contact-detail-value" style="color:var(--text-muted);font-size:0.8rem;">Mon–Sat, 9 AM–6 PM</div>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon">📍</div>
+              <div>
+                <div class="contact-detail-label">Venue</div>
+                <div class="contact-detail-value">Sri Venkateswara College of Engineering</div>
+                <div class="contact-detail-value" style="color:var(--text-muted);font-size:0.8rem;">Pennalur, Chennai–Bangalore Highway, Tamil Nadu</div>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon">🗓️</div>
+              <div>
+                <div class="contact-detail-label">Event Dates</div>
+                <div class="contact-detail-value">September 12–13, 2025</div>
+                <div class="contact-detail-value" style="color:var(--text-muted);font-size:0.8rem;">9:00 AM – 6:00 PM IST each day</div>
+              </div>
+            </div>
+
+            <div class="social-links" aria-label="Social media links">
+              <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+              <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+              <a href="#" class="social-link" aria-label="Instagram">📸</a>
+              <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+              <a href="#" class="social-link" aria-label="WhatsApp">💬</a>
+            </div>
+          </aside>
+
+          <!-- ─── Right — Contact Form ─── -->
+          <div class="contact-form-card" aria-label="Contact form">
+            <h2 class="form-section-title" style="border-bottom:none; margin-bottom: 32px; font-size:1.3rem;">
+              <span class="fsec-icon">✉️</span> Send Us a Message
+            </h2>
+
+            <form id="contact-form" novalidate aria-label="Contact message form">
+
+              <div class="form-grid mb-24">
+                <!-- Name -->
+                <div class="form-group">
+                  <label for="c-name">Full Name <span class="req">*</span></label>
+                  <div class="input-icon-wrapper">
+                    <span class="input-icon">👤</span>
+                    <input type="text" id="c-name" name="name"
+                           placeholder="Your full name" required
+                           maxlength="80" autocomplete="name"
+                           aria-required="true" />
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                  <label for="c-email">Email Address <span class="req">*</span></label>
+                  <div class="input-icon-wrapper">
+                    <span class="input-icon">📧</span>
+                    <input type="email" id="c-email" name="email"
+                           placeholder="you@example.com" required
+                           autocomplete="email"
+                           aria-required="true" />
+                  </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="form-group">
+                  <label for="c-phone">Phone Number</label>
+                  <div class="input-icon-wrapper">
+                    <span class="input-icon">📱</span>
+                    <input type="tel" id="c-phone" name="phone"
+                           placeholder="Optional contact number"
+                           maxlength="10" autocomplete="tel-national" />
+                  </div>
+                </div>
+
+                <!-- Query Type -->
+                <div class="form-group">
+                  <label for="c-type">Query Type <span class="req">*</span></label>
+                  <select id="c-type" name="query_type" required aria-required="true">
+                    <option value="" disabled selected>Select query type</option>
+                    <option value="registration">Registration Help</option>
+                    <option value="event-info">Event Information</option>
+                    <option value="payment">Payment Issue</option>
+                    <option value="sponsorship">Sponsorship Enquiry</option>
+                    <option value="accommodation">Accommodation</option>
+                    <option value="media">Media / Press</option>
+                    <option value="volunteer">Volunteer Enquiry</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <!-- Subject -->
+                <div class="form-group full">
+                  <label for="c-subject">Subject <span class="req">*</span></label>
+                  <input type="text" id="c-subject" name="subject"
+                         placeholder="Brief subject of your query" required
+                         maxlength="150" aria-required="true" />
+                </div>
+
+                <!-- College -->
+                <div class="form-group full">
+                  <label for="c-college">College / Institution <span class="hint">(if applicable)</span></label>
+                  <input type="text" id="c-college" name="college"
+                         placeholder="Your college or organization name" maxlength="100" />
+                </div>
+
+                <!-- How urgent -->
+                <div class="form-group full">
+                  <label for="c-urgency">Priority Level</label>
+                  <div class="range-wrapper">
+                    <input type="range" id="c-urgency" name="urgency_level"
+                           min="1" max="5" step="1" value="3"
+                           aria-valuemin="1" aria-valuemax="5"
+                           oninput="updateUrgency(this.value)" />
+                    <span class="range-value" id="urgency-val">Normal</span>
+                  </div>
+                  <span class="field-helper">1 = Low Priority → 5 = Urgent</span>
+                </div>
+
+                <!-- Message -->
+                <div class="form-group full">
+                  <label for="c-message">Message <span class="req">*</span></label>
+                  <textarea id="c-message" name="message"
+                            placeholder="Describe your query in detail. The more information you provide, the faster we can help you…"
+                            required maxlength="1000" rows="5"
+                            aria-required="true" aria-describedby="msg-count"></textarea>
+                  <span class="field-helper" id="msg-count">0 / 1000 characters</span>
+                </div>
+
+                <!-- File Attachment -->
+                <div class="form-group full">
+                  <label for="c-attachment">Attachment <span class="hint">(optional)</span></label>
+                  <div class="file-upload">
+                    <input type="file" id="c-attachment" name="attachment"
+                           accept="image/*,.pdf,.doc,.docx" />
+                    <div class="file-upload-label">
+                      <span class="file-upload-icon">📎</span>
+                      <span class="file-upload-text"><strong>Attach a file</strong> (screenshot, document)<br>JPG, PNG, PDF, DOC · Max 5MB</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="form-group full">
+                  <label class="checkbox-item" style="border:none;padding:0;background:none;">
+                    <input type="checkbox" id="c-newsletter" name="subscribe" checked />
+                    <span>Keep me updated about NEXUS 2025 announcements via email</span>
+                  </label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg w-100" id="contact-submit-btn"
+                      aria-label="Send contact message">
+                📤 Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- ─── FAQ Section ─── -->
+        <section aria-labelledby="faq-heading">
+          <div class="text-center mb-32 mt-32">
+            <span class="section-label">❓ Frequently Asked Questions</span>
+            <h2 class="section-title" id="faq-heading" style="font-size:2rem;">Got Questions? <span class="text-gradient">We Have Answers.</span></h2>
+            <div class="divider"></div>
+          </div>
+
+          <div class="faq-list" role="list" aria-label="FAQ list">
+            <div class="faq-item" role="listitem">
+              <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFAQ(this)">
+                <span>Who can participate in NEXUS 2025?</span>
+                <span class="faq-chevron">▼</span>
+              </div>
+              <div class="faq-answer"><p>NEXUS 2025 is open to all students currently enrolled in any recognized college or university across India. You must carry a valid college ID for on-site verification.</p></div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFAQ(this)">
+                <span>What is the registration deadline?</span>
+                <span class="faq-chevron">▼</span>
+              </div>
+              <div class="faq-answer"><p>Early Bird registration closes on August 31, 2025. Standard registration closes on September 8, 2025. On-spot registrations may be accepted based on seat availability.</p></div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFAQ(this)">
+                <span>Is the registration fee refundable?</span>
+                <span class="faq-chevron">▼</span>
+              </div>
+              <div class="faq-answer"><p>Registration fees are non-refundable. However, if you're unable to attend, you may transfer your registration to another eligible student by contacting us at least 5 days before the event.</p></div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFAQ(this)">
+                <span>Can I participate in multiple events?</span>
+                <span class="faq-chevron">▼</span>
+              </div>
+              <div class="faq-answer"><p>Yes! You can register for up to 3 events per participant. However, make sure there are no schedule conflicts. Refer to the schedule page to plan accordingly.</p></div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFAQ(this)">
+                <span>Are accommodation facilities available?</span>
+                <span class="faq-chevron">▼</span>
+              </div>
+              <div class="faq-answer"><p>Yes, limited accommodation is available in college hostels for outstation participants at an additional charge of ₹500 per night. Contact us early to reserve a spot.</p></div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFAQ(this)">
+                <span>How do I sponsor NEXUS 2025?</span>
+                <span class="faq-chevron">▼</span>
+              </div>
+              <div class="faq-answer"><p>We welcome corporate and startup sponsors. Email our partnerships team at sponsors@nexus2025.in or use the contact form above selecting "Sponsorship Enquiry".</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Map Placeholder -->
+        <div class="map-placeholder" aria-label="Venue location">
+          <span style="font-size:2.5rem;">📍</span>
+          <h3>SVCE Campus — Pennalur, Tamil Nadu</h3>
+          <p>Chennai–Bangalore National Highway (NH-48), Pennalur Village, Sriperumbudur Taluk, Kancheepuram, Tamil Nadu - 602117</p>
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:8px;">
+            🗺️ Open in Google Maps
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="display:inline-flex;margin-bottom:0;">
+            <div class="logo-icon">N</div>
+            <div><span class="logo-text">NEXUS</span><span class="logo-sub">2025</span></div>
+          </a>
+          <p>India's premier technical symposium for the next generation of technologists.</p>
+        </div>
+        <div class="footer-col"><h4 class="footer-col-title">Navigation</h4><ul>
+          <li><a href="index.html">Home</a></li><li><a href="events.html">Events</a></li>
+          <li><a href="schedule.html">Schedule</a></li><li><a href="register.html">Register</a></li>
+          <li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4 class="footer-col-title">Events</h4><ul>
+          <li><a href="events.html">Hackathon</a></li><li><a href="events.html">CTF</a></li>
+          <li><a href="events.html">Code Clash</a></li><li><a href="events.html">Project Expo</a></li></ul></div>
+        <div class="footer-col"><h4 class="footer-col-title">Support</h4><ul>
+          <li><a href="contact.html">Contact</a></li><li><a href="#">FAQ</a></li><li><a href="#">Rulebook</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS Technical Symposium. All rights reserved. | Reg. ID: 1089113</p>
+        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger
+    const toggle = document.getElementById('nav-toggle');
+    const menu   = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', menu.classList.contains('open'));
+    });
+
+    // FAQ Accordion
+    function toggleFAQ(el) {
+      const item = el.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      document.querySelectorAll('.faq-question').forEach(q => q.setAttribute('aria-expanded', 'false'));
+      if (!wasOpen) {
+        item.classList.add('open');
+        el.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // Keyboard FAQ
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFAQ(q); } });
+    });
+
+    // Message character count
+    document.getElementById('c-message').addEventListener('input', function () {
+      document.getElementById('msg-count').textContent = this.value.length + ' / 1000 characters';
+    });
+
+    // Urgency label
+    function updateUrgency(val) {
+      const labels = { '1':'Low','2':'Below Normal','3':'Normal','4':'High','5':'🚨 Urgent' };
+      document.getElementById('urgency-val').textContent = labels[val];
+    }
+
+    // Contact Form Submit → POST to /api/contact
+    document.getElementById('contact-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const name    = document.getElementById('c-name').value.trim();
+      const email   = document.getElementById('c-email').value.trim();
+      const message = document.getElementById('c-message').value.trim();
+      if (!name || !email || !message) {
+        alert('Please fill in all required fields (Name, Email, Message).');
+        return;
+      }
+
+      const btn = document.getElementById('contact-submit-btn');
+      btn.disabled = true;
+      btn.textContent = '⏳ Sending...';
+
+      try {
+        const formData = new FormData(this);
+        const res  = await fetch('/api/contact', { method: 'POST', body: formData });
+        const data = await res.json();
+
+        if (data.success) {
+          const toast = document.getElementById('toast');
+          toast.style.display = 'flex';
+          setTimeout(() => { toast.style.display = 'none'; }, 4000);
+          this.reset();
+          document.getElementById('msg-count').textContent = '0 / 1000 characters';
+          document.getElementById('urgency-val').textContent = 'Normal';
+        } else {
+          alert('Failed to send: ' + (data.error || 'Please try again.'));
+        }
+      } catch (err) {
+        alert('Network error. Please check your connection and try again.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '📤 Send Message';
+      }
+    });
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').style.background =
+        window.scrollY > 50 ? 'rgba(10,10,26,0.98)' : 'rgba(10,10,26,0.9)';
+    });
+  </script>
+</body>
+</html>
